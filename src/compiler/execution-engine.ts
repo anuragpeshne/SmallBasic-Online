@@ -126,6 +126,13 @@ export class ExecutionEngine {
         }
     }
 
+    public pause(duration: number): void {
+        this._state = ExecutionState.Paused;
+        setTimeout(() => {
+            this._state = ExecutionState.Running;
+        }, duration);
+    }
+
     public terminate(exception?: Diagnostic): void {
         this._state = ExecutionState.Terminated;
         this._exception = exception;
